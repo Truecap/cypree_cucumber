@@ -1,4 +1,4 @@
-name: GitHub Actions Cypress/Telnyx
+name: GitHub Actions Cypress/cucumber/Telnyx
 on: push
 jobs:
   cypress-run:
@@ -10,9 +10,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
-          spec: |
-            cypress/e2e/Cypress_Telnyx/Telnyx.cy.js 
-            cypress/e2e/Cypress_Telnyx/Telnyx.Regist.Login.cy.js
+          start: npm test
             
     
       - uses: cypress-io/github-action@v4
