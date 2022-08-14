@@ -10,7 +10,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
-          start: npm test
+          start: npm test:smoke
             
     
       - uses: cypress-io/github-action@v4
