@@ -11,7 +11,18 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           start: npm run test:smoke
-            
+      - name: Pushes to another repository
+        id: push_directory
+        uses: Truecap/cypress_cucumber@main
+        env:
+          API_TOKEN_GITHUB: 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
+        with:
+          source-directory: results/
+          destination-github-username: 'Truecap'
+          destination-repository-name: 'cypress_cucumber_reports'
+          user-email: snigurslavik@gmail.com
+          commit-message: Report
+          target-branch: main
     
       - uses: cypress-io/github-action@v4
       
