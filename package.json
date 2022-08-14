@@ -1,0 +1,20 @@
+{
+  "name": "test",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run --spec \"**/*.feature\"",
+    "test:all": "cypress run --spec \"**/*.features\""
+  },
+  "dependencies": {
+    "cypress": "^10.4.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-real-events": "^1.7.1"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "stepDefinitions": "cypress/e2e/step_definitions"
+  },
+  "devDependencies": {
+    "cypress-xpath": "^2.0.1"
+  }
+}
