@@ -34,6 +34,6 @@ Node.js 12 or 14 and above
 
 ## Run test
 
-npx cypress open
-npm run test:smoke
-npm run test
+- npx cypress open
+- npm run test:smoke
+- npm run test
