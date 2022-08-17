@@ -10,7 +10,9 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
-          start: npm run test
+          config-file: cypress.config.js
+          browser: chrome
+        
       # - name: Pushes to another repository
       #   id: push_directory
       #   uses: Truecap/cypress_cucumber@main
