@@ -1,0 +1,16 @@
+;FFMETADATA1
+[CHAPTER]
+TIMEBASE=1/1000
+START=-28216
+END=21241
+title=Telnyx Create a new Messaging Profile
+[CHAPTER]
+TIMEBASE=1/1000
+START=14261
+END=70864
+title=Telnyx Try to create new Hosted Sms order with invalid phone number
+[CHAPTER]
+TIMEBASE=1/1000
+START=52420
+END=127632
+title=Telnyx Delete Messaging Profile
