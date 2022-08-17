@@ -17,7 +17,7 @@ When(`Login out if loginned in`, () => {
       profile.profileIcon().should("be.visible");
       profile.profileIcon().click();
       profile.logOutBtn().click({ timeout: 10000 });
-      login.submit().should("be.visible");
+      login.submit().should("be.visible"); 
     }
   });
 });
