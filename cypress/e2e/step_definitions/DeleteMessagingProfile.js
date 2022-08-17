@@ -1,16 +1,20 @@
 import { Then, When, And } from "cypress-cucumber-preprocessor/steps";
+import ProfilePage from "../PageObjects/ProfilePage";
+import MessagingPage from "../PageObjects/MessagingPage";
+
+const messaging = new MessagingPage();
+const profile = new ProfilePage();
 
 When("I Click Measaging button", () => {
-  cy.xpath('(//ul[@class="list-unstyled"])[3]//li[3]').click();
+  profile.messagingButton().click();
 });
-
 Then("I Click icon trash button", () => {
-  cy.xpath('//*[contains(@class, "telnyx-icon-trash")]').click();
-  cy.get('[class*="11kwDe"]').should("be.visible");
+  messaging.iconTrashButton().click();
+  messaging.attentionWindow().should("be.visible");
 });
 And("I click delete button on pop-up window", () => {
-  cy.get('[style*="flex-end;"]>button:nth-child(2)').click();
+  messaging.deleteButtonPopUp().click();
 });
 Then("I see create your first profile button", () => {
-  cy.get('[class="Button_content-tx-1n4VDd"]').should("be.visible");
+  messaging.createFirstAccountButton().should("be.visible");
 });

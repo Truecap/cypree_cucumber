@@ -1,26 +1,28 @@
 import { Then, When, And } from "cypress-cucumber-preprocessor/steps";
+import HomePage from "../PageObjects/HomePage";
+import StoragePage from "../PageObjects/StoragePage";
+
+const storage = new StoragePage();
+const home = new HomePage();
 
 When(`I focus on Products tab`, () => {
-  cy.get('[class*="khahzD"]:first-child').realHover({ position: "bottomLeft" });
+  home.productsTab().realHover({ position: "bottomLeft" });
 });
-
 And(`I click Storage button`, () => {
-  cy.xpath('(//*[text()="Storage"])[1]', { timeout: 5000 }).click();
-  cy.get('[id*="Logo"]').realHover({ position: "bottomLeft" });
+  home.productsDrpDwnStorageBtn().click();
+  home.homePageButton().realHover({ position: "bottomLeft" });
 });
-
 And(`I click Join the waitlist button`, () => {
-  cy.xpath('(//*[@href="#form"])[1]').click();
+  storage.joinWaitListButton().click();
 });
-
 Then("I fill the form", () => {
-  cy.get("#FirstName").type("Test");
-  cy.get("#LastName").type("Test");
-  cy.get("#Email").type("test@gmail.con");
+  storage.frstNameInput({ timeout: 10000 }).type("Test");
+  storage.lstNameInput().type("Test");
+  storage.userInput().type("test@gmail.con");
 });
 And(`I click Apply now button`, () => {
-  cy.get('[type="submit"]').click();
+  storage.applyButton().click();
 });
 Then("I see: You're on the waitlist! text", () => {
-  cy.get('[class="sc-a7a16c36-6 bZeRhp"]').should("be.visible");
+  storage.youreOnTheWaitlistText().should("be.visible");
 });

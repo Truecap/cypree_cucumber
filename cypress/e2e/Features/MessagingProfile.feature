@@ -1,7 +1,7 @@
 Feature: Telnyx
 
     Background:
-        When I Log In
+        When I Log In if needed
         And I Click Measaging button
 
     Scenario: Create a new Messaging Profile
@@ -18,6 +18,7 @@ Feature: Telnyx
         And I select my messaging profile
         And I click Create Order button
         Then I see error message Hosted Sms
+
 
     Scenario: Delete Messaging Profile
         When I Click icon trash button

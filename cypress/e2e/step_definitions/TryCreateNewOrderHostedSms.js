@@ -1,27 +1,29 @@
 import { Then, When, And } from "cypress-cucumber-preprocessor/steps";
+import ProfilePage from "../PageObjects/ProfilePage";
+import NumbersPage from "../PageObjects/NumbersPage";
+
+const numbers = new NumbersPage();
+const profile = new ProfilePage();
 
 When("I Click Numbers button", () => {
-  cy.xpath('(//*[text()= "Numbers"])[2]').click();
+  profile.numbersButton().click();
 });
-
 Then("I Click Hosted SMS button", () => {
-  cy.get('[href="#/app/numbers/hosted-sms"]').click();
+  numbers.hostedSmsTab().click();
 });
 And("I Click Create new order button", () => {
-  cy.get('[class*="kgCFcR"]').click();
+  numbers.hostedSmsTabNewOrderButton().click();
 });
 Then("I enter '{}' to order data input", function (number) {
-  cy.get('[name="numbers"]').type(number);
+  numbers.hostedSmsTabOrderDataInput().clear().type(number);
 });
 And("I select my messaging profile", () => {
-  cy.get('[class=" css-o8iqki"]').click();
-  cy.xpath('//*[text()= "test"]').click();
+  numbers.hostedSmsTabMessagingProfileSelect().click();
+  numbers.messagingProfile().click();
 });
 And("I click Create Order button", () => {
-  cy.xpath('//*[text()= "Create Order"]').click();
+  numbers.createOrderButton().click();
 });
 Then("I see error message Hosted Sms", () => {
-  cy.get('[class="Message__MessageContainer-dAUGde ebWDHB"]').should(
-    "be.visible"
-  );
+  numbers.errorMessagePhoneNumber().should("be.visible");
 });

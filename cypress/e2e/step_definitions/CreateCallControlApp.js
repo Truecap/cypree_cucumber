@@ -1,23 +1,25 @@
 import { Then, When, And } from "cypress-cucumber-preprocessor/steps";
+import ProfilePage from "../PageObjects/ProfilePage";
+import CallControlPage from "../PageObjects/CallControlPage";
+
+const callControl = new CallControlPage();
+const profile = new ProfilePage();
 
 When("I Click call control button", () => {
-  cy.xpath('(//ul[@class="list-unstyled"])[3]//li[5]').click();
+  profile.callControllButton().click();
 });
-
 Then("I click Create your first application button", () => {
-  cy.xpath("(//react-call-control//button)[4]").click();
+  callControl.createFirstAppBtn().click();
 });
 Then('I type "{}" to App name input', function (appName) {
-  cy.get('[name="application_name"]').type(appName);
+  callControl.appNameInput().clear().type(appName);
 });
 And('I type "{}" to url input', function (myUrl) {
-  cy.get('[name="webhook_event_url"]').type(myUrl);
+  callControl.urlInput().clear().type(myUrl);
 });
 And("I press save button", () => {
-  cy.get('[class="mr-2"]').click();
+  callControl.saveButton().click();
 });
 Then("I see green succesful message", () => {
-  cy.get('[class="Message__MessageContainer-dAUGde iLVAjP"]').should(
-    "be.visible"
-  );
+  callControl.successfulMessage().should("be.visible");
 });

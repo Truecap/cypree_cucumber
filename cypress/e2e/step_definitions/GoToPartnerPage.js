@@ -1,15 +1,16 @@
 import { Then, When, And } from "cypress-cucumber-preprocessor/steps";
+import HomePage from "../PageObjects/HomePage";
+const home = new HomePage();
 
 When("I focus on Company tab", () => {
-  cy.get('[class*="khahzD"]:nth-child(8)').realHover({
+  home.companyTab().realHover({
     position: "bottomLeft",
   });
 });
 Then("I click Partners button", () => {
-  cy.get('[href="/company/partnerships"]').click();
-  cy.get('[id*="Logo"]').realHover({ position: "bottomLeft" });
+  home.companyDrpDwnPatnerBtn().click();
+  home.homePageButton().realHover({ position: "bottomLeft" });
 });
-
 And("I see Partners page", () => {
   cy.url().should("include", "/company/partnerships");
 });

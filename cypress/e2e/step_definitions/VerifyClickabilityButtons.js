@@ -1,33 +1,40 @@
 import { Then, When } from "cypress-cucumber-preprocessor/steps";
+import HomePage from "../PageObjects/HomePage";
+import ContactCenterPage from "../PageObjects/ContactCenterPage";
+import SIPTrankingPage from "../PageObjects/SIPTrankingPage";
+import SmsApiPage from "../PageObjects/SmsApiPAge";
+import WebRTCPage from "../PageObjects/WebRTcPage";
+
+const webRtc = new WebRTCPage();
+const smsApi = new SmsApiPage();
+const sipPage = new SIPTrankingPage();
+const contactCenter = new ContactCenterPage();
+const home = new HomePage();
 
 When("I focus on Solutions", () => {
-  cy.get('[class*="khahzD"]:nth-child(3)').realHover({
+  home.solutionsTab().realHover({
     position: "bottomLeft",
   });
 });
 Then(`I click Contact Cener button`, () => {
-  cy.xpath('//*[text() = "Contact Center"]', { timeout: 30000 }).click();
+  home.solutionsDrpDwnContactCenerBtn({ timeout: 30000 }).click();
   cy.url().should("include", "/use-cases/contact-center");
-  cy.get('[id*="Logo"]').realHover({ position: "bottomLeft" });
+  home.homePageButton().realHover({ position: "bottomLeft" });
 });
-
 Then("I click Explore Elastic SIP Trunking button and click back", () => {
-  cy.get('[class="sc-3e56386e-3 epRMTm"]');
-  cy.xpath('//*[text()= "Explore Elastic SIP Trunking"]').click({
+  contactCenter.SIPtrunkingBtn().click({
     force: true,
   });
-  cy.get("span strong em").should("be.visible");
+  sipPage.headerText().should("be.visible");
   cy.go("back");
   cy.url().should("include", "/use-cases/contact-center");
 });
-
 And("I click Explore SMS Api button and click back", () => {
-  cy.xpath('//*[text()= "Explore SMS API"]').click();
-  cy.xpath('(//*[text()="SMS API"])[3]').should("be.visible");
+  contactCenter.smsApiButton().click();
+  smsApi.headerText().should("be.visible");
   cy.go("back");
 });
-
 And("I click Explore WebRTC button", () => {
   cy.xpath('//*[text()= "Explore WebRTC"]').click();
-  cy.get("h1 span").should("be.visible");
+  webRtc.headerText().should("be.visible");
 });

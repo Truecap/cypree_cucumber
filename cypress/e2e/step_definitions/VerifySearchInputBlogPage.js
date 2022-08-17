@@ -1,19 +1,22 @@
 import { Then, When } from "cypress-cucumber-preprocessor/steps";
+import HomePage from "../PageObjects/HomePage";
+import BlogPage from "../PageObjects/BlogPage";
+
+const blog = new BlogPage();
+const home = new HomePage();
 
 When("I focus on Resources tab", () => {
-  cy.get('[class*="khahzD"]:nth-child(6)').realHover({
+  home.resourcesTab().realHover({
     position: "bottomLeft",
   });
 });
 Then(`I click Blog button from resources tab`, () => {
-  cy.get('header .mchNoDecorate[href="/resources"]').click();
-  cy.get('[id*="Logo"]').realHover({ position: "bottomLeft" });
+  home.resourcesDrpDwnBlogBtn().click();
+  home.homePageButton().realHover({ position: "bottomLeft" });
 });
-
 Then('I type "{}" to search input', function (search) {
-  cy.get('[type="search"]').type(search).type("{enter}");
+  blog.searchInput().clear().type(search).type("{enter}");
 });
-
 Then(`I see search result`, () => {
-  cy.get('[href="/resources/telnyx-number-pool"]').should("be.visible");
+  blog.numberPoolResults().should("be.visible");
 });

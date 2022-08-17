@@ -1,33 +1,32 @@
 import { Then, When, And } from "cypress-cucumber-preprocessor/steps";
+import HomePage from "../PageObjects/HomePage";
+import WirelessPage from "../PageObjects/WirelesPage";
+
+const home = new HomePage();
+const wireless = new WirelessPage();
 
 When(`I focus on Pricing tab`, () => {
-  cy.get('[class*="khahzD"]:nth-child(10)').realHover({
+  home.pricingTab().realHover({
     position: "bottomLeft",
   });
 });
-
 And(`I click Wireless button in tab`, () => {
-  cy.get('header [href="/pricing/wireless-pricing"]', {
-    timeout: 5000,
-  }).click();
-  cy.get('[id*="Logo"]').realHover({ position: "bottomLeft" });
+  home.pricingDrpDwnWirelessBtn().click();
+  home.homePageButton().realHover({ position: "bottomLeft" });
 });
-
 Then("I select Ukraine from drop-down", () => {
-  cy.xpath('//*[@class="sc-ecffda1a-4 dCDohY"][1]').scrollIntoView().click();
-  cy.get('[href="/pricing/wireless-pricing/ua"]').click();
+  wireless.countryDropDown().click();
+  wireless.ukraine().click();
 });
-
 And(`I see price for Multi-size SIM card in USD`, () => {
-  cy.xpath('//div[text() ="Multi-size SIM card"]').should("be.visible");
-  cy.xpath('//div[text() ="$1.00"]').should("be.visible");
+  wireless.multiSizeSimName().should("be.visible");
+  wireless.priceInUsd().should("be.visible");
 });
 Then("I change the currency for Euro", () => {
-  cy.xpath('//*[@class="sc-ecffda1a-4 dCDohY"][2]').scrollIntoView().click({force: true});
-  cy.xpath('//div[text() ="EUR"]', { timeout: 30000 }).click({force: true});
+  wireless.countryDropDown().scrollIntoView().click({ force: true });
+  wireless.euro().click({ force: true });
 });
 And(`I see price for Multi-size SIM card in EUR`, () => {
-  cy.xpath('//div[text() ="Multi-size SIM card"]').should("be.visible");
-  cy.xpath('//div[text() ="€0.8500"]').should("be.visible");
+  wireless.multiSizeSimName().should("be.visible");
+  wireless.priceInEuro().should("be.visible");
 });
-

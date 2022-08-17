@@ -1,19 +1,22 @@
-import { Then, When, And } from "cypress-cucumber-preprocessor/steps";
+import { Then, When, And, Given } from "cypress-cucumber-preprocessor/steps";
+import HomePage from "../PageObjects/HomePage";
+import LoginPage from "../PageObjects/LogInPage";
 
-When(`I click on Log In button`, () => {
-  cy.get('[id="dialogAudio"] +a +a').click({ force: true });
+const login = new LoginPage();
+const home = new HomePage();
+
+Given("Im on home page", () => {
+  home.navigate();
 });
-
-Then(
-  'I type invalid email "{}", and password "{}"',
-  function (email, password) {
-    cy.get('form>div>div input[name="email"]').type(email);
-    cy.get('form>div>div input[name="password"]').type(password);
-  }
-);
-
+When(`I click on Log In button`, () => {
+  home.logInButton();
+});
+Then('I type email "{}", and password "{}"', function (username, pswd) {
+  login.enterEmail().clear().type(username);
+  login.enterPassword().clear().type(pswd);
+});
 And(`I click on LogIn button`, () => {
-  cy.get('button[class*="LoginForm__LoginButton"]').click();
+  login.submit().click();
 });
 Then(`I see error message`, () => {
   cy.get('[class*="ilxvtf"]', { timeout: 10000 }).should("be.visible");

@@ -1,25 +1,32 @@
 import { Then, When, And } from "cypress-cucumber-preprocessor/steps";
+import HomePage from "../PageObjects/HomePage";
+import TalkToAnExpertrPage from "../PageObjects/TalkToAnexpertPage";
+
+const talkToanExpert = new TalkToAnExpertrPage();
+const home = new HomePage();
 
 When("I click Talk to us button", () => {
-  cy.get('header ul>li [href="/contact-us"]').click();
+  home.talkToAnExpertBtn().click();
 });
-And(`I fill the need form`, () => {
-  cy.get('[id="Reason_for_Contact__c"]', { timeot: 30000 })
+Then(`I fill the need form`, () => {
+  talkToanExpert
+    .reasonDropDown({ timeot: 30000 })
     .select("Support")
     .should("have.value", "Support");
-  cy.get("#FirstName").type("Test");
-  cy.get("#LastName").type("Test");
-  cy.get("#Email").type("test@gmail.com");
-  cy.get("#Phone_Number_Extension__c").select("+380").should("have.value", "+380");
-  cy.get("#Phone_Number_Base__c").type("977777777");
-  cy.get("#Website").type("https://test.com");
-  cy.get("#Form_Additional_Information__c").type("It is only test");
+  talkToanExpert.frstNameInput().clear().type("Test");
+  talkToanExpert.lstNameInput().clear().type("Test");
+  talkToanExpert.userInput().clear().type("test@gmail.com");
+  talkToanExpert
+    .countryNumberDrpDwn()
+    .select("+380")
+    .should("have.value", "+380");
+  talkToanExpert.phoneNumberInput().type("977777777");
+  talkToanExpert.companyWebSiteInput().type("https://test.com");
+  talkToanExpert.additionalInformationInput().type("It is only test");
 });
-
 And("I click submit button", () => {
-  cy.get('[type="submit"]').click();
+  talkToanExpert.submitButton().click();
 });
-
 Then(`I see Thanks for Reaching Out! text`, () => {
-  cy.get('[class$="cgMQXX"]', { timeot: 30000 }).should("be.visible");
+  talkToanExpert.successfulHeaderText({ timeot: 30000 }).should("be.visible");
 });
