@@ -27,7 +27,7 @@ class HomePage {
   cookieAcceptButton() {
     cy.get("body").then((body) => {
       if (
-        body.find('[aria-label="close and deny"]~div>div>button').length > 0
+        body.find('[aria-label="close and deny"]~div>div>button', {timeout: 30000}).length > 0
       ) {
         cy.get('[aria-label="close and deny"]~div>div>button').click({
           timeout: 10000,
