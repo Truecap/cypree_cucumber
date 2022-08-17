@@ -1,8 +1,8 @@
 class SIPTrankingPage {
-  header = '[class="sc-a7a16c36-6 bZeRhp"]';
+  header = '//*[text() = "SIP Trunking for "]';
 
   headerText() {
-    return cy.get(this.header);
+    return cy.xpath(this.header);
   }
 }
 export default SIPTrankingPage;

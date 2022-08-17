@@ -16,7 +16,7 @@ And(`I click Wireless button`, () => {
 });
 Then("I select Ukraine", () => {
   wireless.countryDropDown().click();
-  wireless.ukraine().click();
+  wireless.ukraine({timeout: 1000}).click();
 });
 And(`I see price for Multi-size SIM card`, () => {
   wireless.multiSizeSimName().should("be.visible");

@@ -2,9 +2,9 @@
   "name": "test",
   "main": "index.js",
   "scripts": {
-    "test": "cypress run --spec \"**/*.feature\"",
-    "test:smoke": "cypress run --config-file cypress.smoke.config.js",
-    "test:all": "cypress run --spec \"**/*.features\""
+    "test": "cypress run --browser chrome --config-file cypress.config.js",
+    "test:smoke": "cypress run --config-file cypress.smoke.config.js"
+
   },
   "dependencies": {
     "cypress": "^10.4.0",

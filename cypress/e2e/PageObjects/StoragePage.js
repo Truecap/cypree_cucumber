@@ -4,7 +4,7 @@ class StoragePage {
   lastNameInput = "#LastName";
   emailInput = "#Email";
   applybtn = '[type="submit"]';
-  successfulText = '[class="sc-a7a16c36-6 bZeRhp"]';
+  successfulText = '[class="sc-31a8cefb-6 eCGKsC"]';
 
   joinWaitListButton() {
     return cy.xpath(this.joinTheWailistBtn);

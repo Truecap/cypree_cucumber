@@ -1,8 +1,8 @@
 class WebRTCPage {
-  header = '[class="sc-a7a16c36-6 bZeRhp"]';
+  header = '//*[text() = "WebRTC for real-time, contextual communications"]';
 
   headerText() {
-    return cy.get(this.header);
+    return cy.xpath(this.header);
   }
 }
 export default WebRTCPage;

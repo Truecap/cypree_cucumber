@@ -1,8 +1,8 @@
 class SmsApiPage {
-  header = '[class="sc-a7a16c36-6 bZeRhp"]';
+  header = '//h1//span[text() = "SMS API"]';
 
   headerText() {
-    return cy.get(this.header);
+    return cy.xpath(this.header);
   }
 }
 export default SmsApiPage;
