@@ -34,6 +34,12 @@ Node.js 12 or 14 and above
 
 ## Run test
 
+install all reuired dependencies
+- npm install
+
+## For running test from cypress
 - npx cypress open
+
+## For running in terminal
 - npm run test:smoke
 - npm run test

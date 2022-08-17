@@ -13,7 +13,7 @@ Given("Im on home page", () => {
 When(`I Log In if needed`, () => {
   home.logInButton();
   cy.get("body").then((body) => {
-    if (body.find('[class*="tx-27OtCC"]').length > 0) {
+    if (body.find('[class*="tx-27OtCC"]', {timeout: 30000}).length > 0) {
       profile.profileIcon().should("be.visible");
     } else {
       login.enterEmail().clear().type("testsne13@gmail.com");
