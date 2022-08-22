@@ -2,7 +2,7 @@ const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
   env: {
-    allureResultsPath: '../allure-results',
+    allureResultsPath: 'allure-results',
   },
   e2e: {
     
