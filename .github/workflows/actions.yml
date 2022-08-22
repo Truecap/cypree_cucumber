@@ -1,5 +1,4 @@
 name: GitHub Actions Cypress/cucumber/Telnyx
-on: push
 on: [push]
 permissions:
   contents: write
