@@ -17,17 +17,7 @@ jobs:
         with:
             config-file: cypress.smoke.config.js
             browser: electron
-  steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-            ode-version: ${{ matrix.node-version }}
-            cache: "npm"
-      - run: npm i npm@latest
-      - run: npm i
-      - name: run test
-        run: npm run cy:run      
+     
       - name: Create Report
         if: always()
         run: npm run allure:generate
