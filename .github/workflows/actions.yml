@@ -30,6 +30,13 @@ jobs:
       #     user-email: snigurslavik@gmail.com
       #     commit-message: Report
       #     target-branch: main
+
+       - name: Deploy to GitHub Pages
+          uses: Truecap/ghaction-github-pages@v3
+          with:
+            branch: My_branch
+            build_dir: public
+ 
     
       - uses: cypress-io/github-action@v4
       
@@ -44,9 +51,5 @@ jobs:
           name: cypress-videos
           path: cypress/videos
 
-        - name: Deploy to GitHub Pages
-          uses: Truecap/ghaction-github-pages@v3
-          with:
-            branch: My_branch
-            build_dir: public
+        
  
