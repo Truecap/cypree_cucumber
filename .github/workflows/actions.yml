@@ -18,14 +18,14 @@ jobs:
             config-file: cypress.smoke.config.js
             browser: electron
       - name: Create Report
-              if: always()
-              run: npm run allure:generate
+        if: always()
+        run: npm run allure:generate
       - name: Upload artifact allure-report
         uses: actions/upload-artifact@v1
-              if: always()
-              with:
-                  name: allure-report
-                  path: ./allure-report
+        if: always()
+        with:
+            name: allure-report
+            path: ./allure-report
       - name: Deploy report
         uses: JamesIves/github-pages-deploy-action@3.1.0
         if: always()
