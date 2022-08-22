@@ -15,31 +15,22 @@ jobs:
       - name: Cypress run smoke
         uses: cypress-io/github-action@v4
         with:
-          config-file: cypress.smoke.config.js
-          browser: firefox
-        
-      # - name: Pushes to another repository
-      #   id: push_directory
-      #   uses: Truecap/cypress_cucumber@main
-      #   env:
-      #     API_TOKEN_GITHUB: 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
-      #   with:
-      #     source-directory: results/
-      #     destination-github-username: 'Truecap'
-      #     destination-repository-name: 'cypress_cucumber_reports'
-      #     user-email: snigurslavik@gmail.com
-      #     commit-message: Report
-      #     target-branch: main
-    
-      # - uses: cypress-io/github-action@v4
-      
-      - uses: actions/upload-artifact@v2
-        if: failure()
+            config-file: cypress.smoke.config.js
+            browser: firefox
+      - name: Create Report
+        if: always()
+        run: npm run allure:generate
+      - name: Upload artifact allure-report
+        uses: actions/upload-artifact@v1
+        if: always()
         with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-      - uses: actions/upload-artifact@v2
-        if: failure()
+            name: allure-report
+            path: ./allure-report
+      - name: Deploy report
+        uses: Truecap/github-pages-deploy-action@3.1.0
+        if: always()
         with:
-          name: cypress-videos
-          path: cypress/videos
+            ACCESS_TOKEN: ${{'secrets.ACCESS_TOKEN'}}
+            BRANCH: My_branch # The branch the action should deploy to.
+            FOLDER: allure-report # The folder the action should deploy.
+            TARGET_FOLDER: docs
