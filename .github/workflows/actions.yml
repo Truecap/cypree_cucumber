@@ -12,6 +12,11 @@ jobs:
         with:
           config-file: cypress.config.js
           browser: chrome
+      - name: Cypress run
+        uses: cypress-io/github-action@v4
+        with:
+          config-file: cypress.smoke.config.js
+          browser: firefox
         
       # - name: Pushes to another repository
       #   id: push_directory
@@ -26,7 +31,7 @@ jobs:
       #     commit-message: Report
       #     target-branch: main
     
-      # - uses: cypress-io/github-action@v4
+      - uses: cypress-io/github-action@v4
       
       - uses: actions/upload-artifact@v2
         if: failure()
@@ -38,3 +43,12 @@ jobs:
         with:
           name: cypress-videos
           path: cypress/videos
+
+          name: Deploy to GitHub Pages
+          if: success()
+          uses: crazy-max/ghaction-github-pages@v3
+          with:
+            target_branch: gh-pages
+            build_dir: public
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
