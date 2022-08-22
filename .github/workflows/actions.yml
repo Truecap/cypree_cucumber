@@ -27,7 +27,7 @@ jobs:
             name: allure-report
             path: ./allure-report
       - name: Deploy report
-        uses: Truecap/github-pages-deploy-action@3.1.0
+        uses: JamesIves/github-pages-deploy-action@3.1.0
         if: always()
         with:
             ACCESS_TOKEN: ${{'secrets.ACCESS_TOKEN'}}
