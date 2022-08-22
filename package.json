@@ -3,7 +3,7 @@
   "main": "index.js",
   "scripts": {
     "test": "cypress run --browser chrome --config-file cypress.config.js",
-    "test:smoke": "cypress run --config-file cypress.smoke.config.js"
+    "test:smoke": "cypress run --browser electron --config-file cypress.smoke.config.js"
 
   },
   "dependencies": {

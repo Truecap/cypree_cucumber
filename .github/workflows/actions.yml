@@ -1,5 +1,7 @@
 name: GitHub Actions Cypress/cucumber/Telnyx
-on: push
+on: 
+  push:
+      branches: [main]
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
@@ -7,16 +9,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
      
-      - name: Cypress run
-        uses: cypress-io/github-action@v4
-        with:
-          config-file: cypress.config.js
-          browser: chrome
+      # - name: Cypress run
+      #   uses: cypress-io/github-action@v4
+      #   with:
+      #     config-file: cypress.config.js
+      #     browser: chrome
       - name: Cypress run smoke
         uses: cypress-io/github-action@v4
         with:
             config-file: cypress.smoke.config.js
-            browser: firefox
+            browser: electron
       - name: Create Report
         if: always()
         run: npm run allure:generate

@@ -18,7 +18,7 @@ When(`I Log In if needed`, () => {
     } else {
       login.enterEmail().clear().type("testsne13@gmail.com");
       login.enterPassword().clear().type("Test1234test!");
-      login.submit().click({force: true});
+      login.submit().trigger('mouseover').click({force: true});
       cy.get('[class*="tx-27OtCC"]', { timeout: 30000 }).should("be.visible");
     }
   });
