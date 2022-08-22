@@ -1,11 +1,10 @@
 const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
+  env: {
+    allureResultsPath: '../allure-results',
+  },
   e2e: {
-    reporter: 'junit',
-  reporterOptions: {
-    mochaFile: 'results/my-test-output.xml',
-    toConsole: true
   },
     // We've imported your old cypress plugins here.
     // You may want to clean this up later by importing these.
@@ -15,4 +14,4 @@ module.exports = defineConfig({
     excludeSpecPattern: '*.js',
     specPattern: 'cypress/e2e/Features/*.{feature,features}',
   },
-})
+)
