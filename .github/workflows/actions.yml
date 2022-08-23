@@ -18,7 +18,7 @@ jobs:
                   cache: "npm"
             - run: npm i npm@latest
             - run: npm i
-        steps:
+
             - name: Checkout
               uses: actions/checkout@v2
 
