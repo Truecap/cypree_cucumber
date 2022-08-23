@@ -14,15 +14,22 @@ jobs:
         with:
             config-file: cypress.smoke.config.js
             browser: electron
-      - name: Create Report
-        if: always()
-        run: npm run allure:generate
-      - name: Upload artifact allure-report
+      # - name: Create Report
+      #   if: always()
+      #   run: npm run allure:generate
+      # - name: Upload artifact allure-report
+      #   uses: actions/upload-artifact@v1
+      #   if: always()
+      #   with:
+      #       name: allure-report
+      #       path: ./allure-report
+      - name: Upload reports
         uses: actions/upload-artifact@v1
         if: always()
         with:
-            name: allure-report
-            path: ./allure-report
+            name: reports
+            # set path to Robot Framework results reports. Exclude dummy file that is needed because of ppodgorsek image priviledges.
+            path: ${{ github.workspace }}/reports
       - name: Deploy to pages
         if: always()
         uses: peaceiris/actions-gh-pages@v3.7.3
