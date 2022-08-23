@@ -14,26 +14,20 @@ jobs:
         with:
             config-file: cypress.smoke.config.js
             browser: electron
-      # - name: Create Report
-      #   if: always()
-      #   run: npm run allure:generate
-      # - name: Upload artifact allure-report
-      #   uses: actions/upload-artifact@v1
-      #   if: always()
-      #   with:
-      #       name: allure-report
-      #       path: ./allure-report
-      - name: Upload reports
+      - name: Create Report
+        if: always()
+        run: npm run allure:generate
+      - name: Upload artifact allure-report
         uses: actions/upload-artifact@v1
         if: always()
         with:
-            name: reports
-            # set path to Robot Framework results reports. Exclude dummy file that is needed because of ppodgorsek image priviledges.
-            path: ${{ github.workspace }}/reports
-      - name: Deploy to pages
+            name: allure-report
+            path: ./allure-report
+      - name: Deploy report
+        uses: JamesIves/github-pages-deploy-action@3.1.0
         if: always()
-        uses: peaceiris/actions-gh-pages@v3.7.3
         with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            publish_branch: gh-pages
-            publish_dir: reports
+            ACCESS_TOKEN: ${{'secrets.ACCESS_TOKEN'}}
+            BRANCH: master # The branch the action should deploy to.
+            FOLDER: allure-report # The folder the action should deploy.
+            TARGET_FOLDER: docs
