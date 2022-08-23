@@ -2,8 +2,8 @@
   "name": "test",
   "main": "index.js",
   "scripts": {
-    "test": "cypress run --browser chrome --config-file cypress.config.js",
-    "test:smoke": "cypress run --browser electron --config-file cypress.smoke.config.js",
+    "test": "cypress run --browser chrome --config-file cypress.config.js --env allure=true",
+    "test:smoke": "cypress run --browser electron --config-file cypress.smoke.config.js --env allure=true",
     "allure:generate": "npx allure generate allure-results --clean",
     "report": "npx allure generate reports/ui/allure-results --clean -o reports/ui/allure-report && allure open reports/ui/allure-report",
     "clear": "rm -r reports/** || true"
