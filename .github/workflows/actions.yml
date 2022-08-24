@@ -31,7 +31,7 @@ jobs:
             path: ./allure-report
       - name: Deploy report
         uses: JamesIves/github-pages-deploy-action@3.1.0
-        if: ${{ github.ref == 'refs/heads/main' }}
+        if: always()
         with:
             ACCESS_TOKEN: ${{'secrets.ACCESS_TOKEN'}}
             BRANCH: master # The branch the action should deploy to.
