@@ -35,5 +35,5 @@ jobs:
         with:
             ACCESS_TOKEN: ${{'secrets.KEY'}}
             BRANCH: gh-pages # The branch the action should deploy to.
-            FOLDER: allure-report # The folder the action should deploy.
+            # FOLDER: allure-report # The folder the action should deploy.
             # TARGET_FOLDER: docs
