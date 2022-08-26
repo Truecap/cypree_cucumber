@@ -14,12 +14,12 @@ jobs:
         with:
           config-file: cypress.config.js
           browser: chrome
-          
-      - name: Cypress run smoke
-        uses: cypress-io/github-action@v4
-        with:
-            config-file: cypress.smoke.config.js
-            browser: electron
+
+      # - name: Cypress run smoke
+      #   uses: cypress-io/github-action@v4
+      #   with:
+      #       config-file: cypress.smoke.config.js
+      #       browser: electron
      
       - name: Create Report
         if: always()
