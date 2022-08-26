@@ -10,8 +10,8 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       AllureWriter(on, config);
       on('file:preprocessor', webpackPreprocessor);
-      return config;
-      //return require('./cypress/plugins/index.js')(on, config)
+      //return config;
+      return require('./cypress/plugins/index.js')(on, config)
     },
     excludeSpecPattern: '*.js',
     specPattern: 'cypress/e2e/Features/[04]LogInTelnyx.feature',
