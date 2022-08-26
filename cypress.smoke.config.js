@@ -3,13 +3,12 @@ const AllureWriter = require('@shelex/cypress-allure-plugin/writer');
 
 module.exports = defineConfig({
   env: {
-    allureResultsPath: 'allure-results',
+    allureResultsPath: '../allure-results',
   },
   e2e: {
     
     setupNodeEvents(on, config) {
       AllureWriter(on, config);
-      on('file:preprocessor', webpackPreprocessor);
       //return config;
       return require('./cypress/plugins/index.js')(on, config)
     },
