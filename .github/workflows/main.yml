@@ -26,8 +26,11 @@ jobs:
       - name: Install 🔧
         run: npm install
 
-      - name: Run Test 🔨
-        run: npm run test
+      - name: Cypress run smoke
+        uses: cypress-io/github-action@v4
+        with:
+            config-file: cypress.smoke.config.js
+            browser: electron
 
       - name: Build 👷
         run: npm run build
