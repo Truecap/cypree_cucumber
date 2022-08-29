@@ -1,0 +1,3 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Aug 29 06:06:50 UTC 2022","Mon Aug 29 06:07:18 UTC 2022","27184","","Telnyx","","","","Log In with invalid credentials",""
+"failed","Mon Aug 29 06:07:18 UTC 2022","Mon Aug 29 06:08:02 UTC 2022","44498","","Telnyx","","","","Log in if needed",""
