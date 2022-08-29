@@ -20,4 +20,4 @@ import './commands'
 // require('./commands')
 require('cypress-xpath');
 import "cypress-real-events/support";
-// import '@shelex/cypress-allure-plugin';
+import '@shelex/cypress-allure-plugin';

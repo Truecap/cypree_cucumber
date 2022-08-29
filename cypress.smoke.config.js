@@ -5,6 +5,9 @@ module.exports = defineConfig({
   env: {
     allureResultsPath: 'allure-results',
   },
+  component: {
+    excludeSpecPattern: 'cypress/e2e/Features/*.{feature,features}'
+  },
   e2e: {
     
     setupNodeEvents(on, config) {
