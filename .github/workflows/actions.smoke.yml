@@ -9,19 +9,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
      
-      - name: Cypress run
-        uses: cypress-io/github-action@v4
-        with:
-          config-file: cypress.config.js
-          browser: chrome
-          env: allure=true
-
-      # - name: Cypress run smoke
+      # - name: Cypress run
       #   uses: cypress-io/github-action@v4
       #   with:
-      #       config-file: cypress.smoke.config.js
-      #       browser: electron
-      #       env: allure=true
+      #     config-file: cypress.config.js
+      #     browser: chrome
+      #     env: allure=true
+
+      - name: Cypress run smoke
+        uses: cypress-io/github-action@v4
+        with:
+            config-file: cypress.smoke.config.js
+            browser: electron
+            env: allure=true
      
       - name: Check Folder
         run: |
