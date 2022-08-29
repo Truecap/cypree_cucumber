@@ -20,6 +20,12 @@ jobs:
             config-file: cypress.smoke.config.js
             browser: electron
      
+     - name: Check Folder
+        run: |
+          ls
+    - name: Check Folder
+        run: |
+          ls ../
       - name: Create Report
         if: always()
         run: npm run allure:generate
