@@ -14,7 +14,8 @@ jobs:
         with:
           config-file: cypress.config.js
           browser: chrome
-          
+          env: allure=true
+
       - name: Cypress run smoke
         uses: cypress-io/github-action@v4
         with:
