@@ -1,7 +1,7 @@
 name: GitHub Actions Cypress/cucumber/Telnyx
 on:
     push:
-        branches: [master]
+        branches: [another_try]
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
