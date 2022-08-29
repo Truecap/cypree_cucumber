@@ -14,6 +14,7 @@ module.exports = defineConfig({
       return require('./cypress/plugins/index.js')(on, config)
     },
     excludeSpecPattern: '*.js',
+    supportFile: false,
     specPattern: 'cypress/e2e/Features/*.{feature,features}',
   },
 )
