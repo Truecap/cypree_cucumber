@@ -1,7 +1,7 @@
 name: GitHub Actions Cypress/cucumber/Telnyx
 on:
     push:
-        branches: [another_try]
+        branches: [master]
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
@@ -9,11 +9,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
      
-      # - name: Cypress run
-      #   uses: cypress-io/github-action@v4
-      #   with:
-      #     config-file: cypress.config.js
-      #     browser: chrome
+      - name: Cypress run
+        uses: cypress-io/github-action@v4
+        with:
+          config-file: cypress.config.js
+          browser: chrome
+          
       - name: Cypress run smoke
         uses: cypress-io/github-action@v4
         with:
@@ -41,6 +42,6 @@ jobs:
         if: always()
         with:
             ACCESS_TOKEN: ${{'secrets.ACCESS_TOKEN'}}
-            BRANCH: another_try # The branch the action should deploy to.
+            BRANCH: master # The branch the action should deploy to.
             FOLDER: allure-report # The folder the action should deploy.
             target-folder: docs
