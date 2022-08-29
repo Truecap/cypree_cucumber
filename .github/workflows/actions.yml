@@ -19,6 +19,7 @@ jobs:
         with:
             config-file: cypress.smoke.config.js
             browser: electron
+            env: allure=true
      
       - name: Check Folder
         run: |

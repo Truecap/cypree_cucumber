@@ -3,7 +3,7 @@ const AllureWriter = require('@shelex/cypress-allure-plugin/writer');
 
 module.exports = defineConfig({
   env: {
-    allureResultsPath: '../allure-results',
+    allureResultsPath: 'allure-results',
   },
   e2e: {
   },
