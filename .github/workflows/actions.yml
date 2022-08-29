@@ -43,4 +43,3 @@ jobs:
             ACCESS_TOKEN: ${{'secrets.ACCESS_TOKEN'}}
             BRANCH: another_try # The branch the action should deploy to.
             FOLDER: allure-report # The folder the action should deploy.
-            TARGET_FOLDER: docs
