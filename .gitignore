@@ -3,6 +3,7 @@ playwright-report
 results
 All.features
 
+allure-results
 node_modules
 videos
 reports
